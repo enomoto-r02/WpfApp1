@@ -12,7 +12,7 @@
                 <DataGridTemplateColumn Header="Enabled">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <CheckBox Name="myCheckBox" IsChecked="{Binding _enable, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                            <CheckBox Name="myCheckBox" IsChecked="{Binding enable, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                       Checked="CheckBox_EnableChecked" Unchecked="CheckBox_EnableUnChecked"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

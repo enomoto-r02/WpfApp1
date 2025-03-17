@@ -47,15 +47,15 @@ namespace WpfApp1
 
         private void CheckBox_EnableChecked(object sender, RoutedEventArgs e)
         {
-            CheckBoxEnable(true);
+            CheckBoxEnable(sender, e, true);
         }
 
         private void CheckBox_EnableUnChecked(object sender, RoutedEventArgs e)
         {
-            CheckBoxEnable(false);
+            CheckBoxEnable(sender, e, false);
         }
 
-        private void CheckBoxEnable(bool enable)
+        private void CheckBoxEnable(object sender, RoutedEventArgs e, bool enable)
         {
             int rowNum = sampleGrid.ItemContainerGenerator.Items.Count;
 
