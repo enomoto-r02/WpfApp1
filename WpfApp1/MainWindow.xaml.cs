@@ -1,14 +1,5 @@
-﻿using System;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WpfApp1
 {
@@ -34,10 +25,8 @@ namespace WpfApp1
             sampleGrid.ItemsSource = dataGridItems;
         }
 
-        // Events for Enabled checkboxes
         private void DataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            //foreach (var cell in sampleGrid.SelectedCells)
             foreach (var add in e.AddedCells)
             {
                 var data = add.Item as GridData;
