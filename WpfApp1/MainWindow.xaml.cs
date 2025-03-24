@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace WpfApp1
 {
@@ -16,11 +17,10 @@ namespace WpfApp1
 
             List<GridData> dataGridItems = new List<GridData>();
 
-            dataGridItems.Add(new GridData(true, "test1", false));
-            dataGridItems.Add(new GridData(false, "test2", false));
-            dataGridItems.Add(new GridData(true, "test3", false));
-            dataGridItems.Add(new GridData(false, "test4", false));
-            dataGridItems.Add(new GridData(true, "test5", false));
+            for (int i=0; i<1000; i++)
+            {
+                dataGridItems.Add(new GridData(i % 2 == 0, "test"+i.ToString(), false));
+            }
 
             sampleGrid.ItemsSource = dataGridItems;
         }
@@ -47,12 +47,18 @@ namespace WpfApp1
 
         private void CheckBox_EnableChecked(object sender, RoutedEventArgs e)
         {
-            CheckBoxEnable(sender, e, true);
+            if (sender is CheckBox checkBox && checkBox.IsKeyboardFocusWithin)
+            {
+                CheckBoxEnable(sender, e, true);
+            }
         }
 
         private void CheckBox_EnableUnChecked(object sender, RoutedEventArgs e)
         {
-            CheckBoxEnable(sender, e, false);
+            if (sender is CheckBox checkBox && checkBox.IsKeyboardFocusWithin)
+            {
+                CheckBoxEnable(sender, e, false);
+            }
         }
 
         private void CheckBoxEnable(object sender, RoutedEventArgs e, bool enable)
@@ -62,10 +68,13 @@ namespace WpfApp1
             for (int i = 0; i < rowNum; i++)
             {
                 var row = (DataGridRow)sampleGrid.ItemContainerGenerator.ContainerFromIndex(i);
-                var rowData = row.DataContext as GridData;
-                if (rowData != null && rowData.select == true)
+                if (row != null)
                 {
-                    rowData.enable = enable;
+                    var rowData = row.DataContext as GridData;
+                    if (rowData != null && rowData.select == true)
+                    {
+                        rowData.enable = enable;
+                    }
                 }
             }
         }

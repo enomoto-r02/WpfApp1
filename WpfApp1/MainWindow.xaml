@@ -7,12 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="sampleGrid" AutoGenerateColumns="False" SelectedCellsChanged="DataGrid_SelectedCellsChanged">
+        <DataGrid x:Name="sampleGrid" AutoGenerateColumns="False" SelectedCellsChanged="DataGrid_SelectedCellsChanged" SelectionMode="Extended">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Enabled">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <CheckBox Name="myCheckBox" IsChecked="{Binding enable, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                            <CheckBox Name="myCheckBox" IsChecked="{Binding enable, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                       Checked="CheckBox_EnableChecked" Unchecked="CheckBox_EnableUnChecked"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
